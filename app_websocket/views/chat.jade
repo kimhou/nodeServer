@@ -1,0 +1,27 @@
+extends common/header
+
+block content
+  div.container
+      div.hero-unit
+          h2 Chat Room
+              small &nbsp;this is a webcket demo:
+          div.alert.alert-info
+            form#socketForm.form-inline
+              div#startContent
+                input#userName.span4(type="text",placeholder="input your name")
+                &nbsp;
+                button#submitNameBtn.btn(type="button") Start
+              div#chatContent.hidden
+                input#sendInput.span4(type="text",placeholder="input a message")
+                &nbsp;
+                button#submitBtn.btn(type="submit") Send
+          ul#socketMsg
+  script(src='http://localhost:3002/socket.io/socket.io.js')
+  script
+
+    //load jquery and bootstrap
+    seajs.use('module/chat/index', function(chat){
+        chat.init();
+        //seajs.use('bootstrap');
+    });
+    

@@ -1,0 +1,31 @@
+extends common/header
+
+block content
+  div.container
+    div.row.hero-unit
+        h2 Video Room
+            small &nbsp;this is a websocket getUserMedia demo:
+        div.alert.alert-info.row
+          div#startContent
+            form#nameForm.form-inline
+              input#userName.span4(type="text",placeholder="input your name")
+              &nbsp;
+              button#submitNameBtn.btn(type="submit") Start
+          div#videoContent.hidden
+            div.span3.alert-error
+              h4 your self:
+                div(style="padding:5px;background:#333;text-align:center;")
+                  video(autoplay,width=300)#myVideoOutput
+            div.span2.alert-block
+              h4 connected users:
+              ul#userList
+            div.span5.well.pull-right
+              h4#currentServerName
+              div(style="padding:10px;background:#333; text-align:center;")
+                img#imgDom(src="")
+  script(src='http://localhost:3003/socket.io/socket.io.js')
+  script
+    seajs.use('module/video/index', function(v){
+        v.init();
+    });
+    
